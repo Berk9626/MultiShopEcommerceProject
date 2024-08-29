@@ -18,13 +18,13 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet]
         public async Task<IActionResult> CategoryList()
         {
-            var values = _categoryService.GetAll();
+            var values = await _categoryService.GetAll();
             return Ok(values);
         }
         [HttpGet("id")]
         public async Task<IActionResult> GetByIdCategory(string id)
         {
-            var values = _categoryService.GetByIdCategoryAsync(id);
+            var values = await _categoryService.GetByIdCategoryAsync(id);
             return Ok(values);
         }
         [HttpPost]
