@@ -27,7 +27,7 @@ namespace MutlShop.Order.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> AddressList()
         {
-            var values = _getadressqueryHandler.Handle();
+            var values =await  _getadressqueryHandler.Handle();
             return Ok(values);
         }
 
