@@ -1,0 +1,15 @@
+Settings klasörü: veritabanýyla ilgili ayarlarý tutacak interface'i ve klasý barýndýracak ! Bu apsettingjson baðlantý iþlemlerini gerçekleþtireceðimiz configurztion. Yani biz databasele baðlantý kurarken localdeki port sunucusu üzerinden iþlemi gerçekleþtireceðiz.
+
+Single Responsibility: her sýnýf veya metat sadece kendi iþlemini yapsýn. Ben burda her bir crud iþlemi için sýnýflar tanýmlýyor olacaðým.
+docker volüme: 3 adet containerým var. Bunlardan birisi, redis, diðeri mongodb, ve diðeri de mssql databaseini kullanan 3 apiye sahip bir yapý ve bu yapýlardan sallýyorum 
+mongodb databasei kullanan bir containerý sildim fakat içinde yer alan verilerin kaybolmasýný istemiyorum. Bilgisayar, telefon ve kalem bilgisi gibi. Burda docker volüme
+iþin içine giriyor. docker run komutuna -v flagý kullanarak elde ediliyor. docker volüme create volume_name komutuyla çalýþýr.
+Dockerda var olan imagelarý görüntülemek için cmd yazýp baþlat menüsüne docker images yazabiliriz.
+portainer, dockerý bir destkop üzerinden deðil de daha geliþmiþ bir arayüz üzerinden geliþtirmemize olanak saðlayan bir tool.
+docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
+Beaver uygulamasýný kullanarak database sistemlerini dockerda yönetmemizi saðlayacak. Komple veritabaný yönetim modeli.
+hostu 1434 yaptým portainerda çünkü 1433'te ben identity servera ayýracaðým. Bundan dolayý 1434 yaptým. Orderdb için yaptýðým bu. Mongoda 2717 kullanacaðým. Rediste baþka
+.Yani ben ilk baþta 1434 numaralý saðlayýcý üzerinden orderdb veritabanýný kaldýrmak.
+
+Json web token= Bizim herhangi bir kaynaða eriþim yetkimiz var mý yok mu bunu saðlýyordu.
+OpeýnId connect protokolü kullanýcýyla ilgili iþlemleri hallederken, o auth2.0 protokolü yetkilendirmeyle ilgili iþlemleri halleder. Authentication kiþinin kimlikle ilgili bilgilerini ele alýrken authorzation daha çok yetkilendirmeye alakalý kýsýtlamalarý koyar.
