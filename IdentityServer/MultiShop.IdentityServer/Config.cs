@@ -26,6 +26,11 @@ namespace MultiShop.IdentityServer
             new ApiResource("ResourceOrder")
             {
                 Scopes={"OrderFullPermission"}
+            },
+            new ApiResource(IdentityServerConstants.LocalApi.ScopeName)//burda identity servera token alma izni oluşturarak sisteme dahili söz konusu
+            {
+                //örnek olarak ben kişiyi tokenla beraber eklerken dahi 401 unauth durumu yaşıyordum. Şimdi bunun öünün açtık.
+
             }
         };
 
@@ -45,7 +50,8 @@ namespace MultiShop.IdentityServer
             new ApiScope("CatalogFullPermission","Full authority for catalog operations"), //CatalogFullPermission'a sahip olan kişinin yapabileceği işlemler
             new ApiScope("CatalogReadPermission","Reading authority for catalog operations"),
             new ApiScope("DiscountFullPermission","Full authority for discount operations"),
-            new ApiScope("OrderFullPermission","Full authority for order operations")
+            new ApiScope("OrderFullPermission","Full authority for order operations"),
+            new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
 
         public static IEnumerable<Client> Clients => new Client[]
@@ -57,7 +63,7 @@ namespace MultiShop.IdentityServer
                 ClientName="MultiShop Visitor User",
                 AllowedGrantTypes=GrantTypes.ClientCredentials, //AllowedGrantTypes= neye izin verdiğiyle alakalı
                 ClientSecrets= {new Secret("multishopsecret".Sha256())},
-                AllowedScopes={ "CatalogReadPermission" }
+                AllowedScopes={ "DiscountFullPermission" }
             },
 
             //manager
