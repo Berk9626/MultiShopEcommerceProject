@@ -1,0 +1,11 @@
+1-x ticaret-Ali Yýldýz-Barcode:00112-Yurtiçi
+(satan kiþi kim, alýcý kim, barcode ne, hangi kargo ?)
+
+Altýnda da hareketler tablosu olacak, bu tabloda da,
+hareket id 1 mesela, kargo numarasý 000122, Nerde mesela bostancý yurtiçi kargodan teslim alýn
+2-000122-gebze transfer merkezi -10.01.2024
+3-000122-sakarya sardiyan -10.02.2024
+4-000122-daðýtýma çýktý -12.01.2024
+5-000122 teslim alýndý
+
+bir de kargo isimleri tablosu var diyebiliriz. Üçüncü tablo için de
