@@ -31,6 +31,14 @@ namespace MultiShop.IdentityServer
             {
                 //örnek olarak ben kişiyi tokenla beraber eklerken dahi 401 unauth durumu yaşıyordum. Şimdi bunun öünün açtık.
 
+            },
+            new ApiResource("ResourceCargo")
+            {
+                Scopes={"CargoFullPermission"}
+            },
+             new ApiResource("ResourceBasket")
+            {
+                Scopes={"BasketFullPermission"}
             }
         };
 
@@ -51,6 +59,9 @@ namespace MultiShop.IdentityServer
             new ApiScope("CatalogReadPermission","Reading authority for catalog operations"),
             new ApiScope("DiscountFullPermission","Full authority for discount operations"),
             new ApiScope("OrderFullPermission","Full authority for order operations"),
+            new ApiScope("CargoFullPermission","Full authority for cargo operations"),
+             new ApiScope("BasketFullPermission","Full authority for basket operations"),
+
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -71,7 +82,7 @@ namespace MultiShop.IdentityServer
             {
                 ClientId="MultiShopManagerId",
                 ClientName="MultiShop Manager User",
-                AllowedGrantTypes=GrantTypes.ClientCredentials, //AllowedGrantTypes= neye izin verdiğiyle alakalı
+                AllowedGrantTypes=GrantTypes.ResourceOwnerPassword, //AllowedGrantTypes= neye izin verdiğiyle alakalı
                 ClientSecrets= {new Secret("multishopsecret".Sha256())},
                 AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission" }
             },
@@ -81,9 +92,10 @@ namespace MultiShop.IdentityServer
             {
                 ClientId="MultiShopAdminId",
                 ClientName="MultiShop Admin User",
-                AllowedGrantTypes=GrantTypes.ClientCredentials, //AllowedGrantTypes= neye izin verdiğiyle alakalı
+                AllowedGrantTypes=GrantTypes.ResourceOwnerPassword, //AllowedGrantTypes= neye izin verdiğiyle alakalı
                 ClientSecrets= {new Secret("multishopsecret".Sha256())},
                 AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermission",
+                      "CargoFullPermission", "BasketFullPermission",
                   IdentityServerConstants.LocalApi.ScopeName, //yerelde tuttuğum api üzerinden scope'un yani kapsamın adına ulaş
                   IdentityServerConstants.StandardScopes.Email, //adminin emailini göster
                   IdentityServerConstants.StandardScopes.OpenId,

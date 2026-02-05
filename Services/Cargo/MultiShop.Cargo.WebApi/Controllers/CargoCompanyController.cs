@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Cargo.BusinessLayer.Abstract;
 using MultiShop.Cargo.DtoLayer.Dtos.CargoCompanyDtos;
@@ -6,6 +7,7 @@ using MultiShop.Cargo.EntityLayer.Concrete;
 
 namespace MultiShop.Cargo.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CargoCompanyController : ControllerBase
@@ -44,7 +46,7 @@ namespace MultiShop.Cargo.WebApi.Controllers
         public IActionResult GetCargoCompanyById(int id)
         {
             var value = _cargoCompanyService.TGetById(id);
-            return Ok("Cargo removed successfully");
+            return Ok(value);
         }
         [HttpPut]
         public IActionResult UpdateCargoCompany(UpdateCargoCompanyDto updateCargoCompanyDto)
