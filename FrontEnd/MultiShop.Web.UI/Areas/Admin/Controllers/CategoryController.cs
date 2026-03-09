@@ -8,6 +8,7 @@ namespace MultiShop.Web.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [AllowAnonymous]
+    [Route("Admin/Category")]
     public class CategoryController : Controller //Adminin
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -16,7 +17,7 @@ namespace MultiShop.Web.UI.Areas.Admin.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
-
+        [Route("Index")]
         public async Task <IActionResult> Index()
         {
             ViewBag.v1 = "Ana Sayfa";
@@ -38,6 +39,7 @@ namespace MultiShop.Web.UI.Areas.Admin.Controllers
             return View();
         }
         [HttpGet]
+        [Route("CreateCategory")]
         public IActionResult CreateCategory() 
         {
             ViewBag.v1 = "Ana Sayfa";
@@ -48,6 +50,7 @@ namespace MultiShop.Web.UI.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
+        [Route("CreateCategory")]
         public async Task< IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
         {
             var client = _httpClientFactory.CreateClient();
@@ -60,6 +63,18 @@ namespace MultiShop.Web.UI.Areas.Admin.Controllers
             }
 
             return View();
+        }
+        [Route("DeleteCategory/{id}")]
+        public async Task<IActionResult> DeleteCategory(string id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responsoMessage = await client.DeleteAsync("https://localhost:7070/api/Categories?id=" +id);
+            if (responsoMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Category", new { area = "Admin" });
+            }
+            return View();
+
         }
     }
 }
